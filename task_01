@@ -1,0 +1,59 @@
+# To-Do List App (CLI Version)
+
+tasks = []
+
+def show_tasks():
+    if not tasks:
+        print("\nNo tasks available!\n")
+    else:
+        print("\nYour Tasks:")
+        for i, task in enumerate(tasks, 1):
+            print(f"{i}. {task}")
+        print("")
+
+def add_task():
+    task = input("Enter new task: ")
+    tasks.append(task)
+    print("Task added successfully!\n")
+
+def update_task():
+    show_tasks()
+    index = int(input("Enter task number to update: ")) - 1
+    if 0 <= index < len(tasks):
+        tasks[index] = input("Enter new updated task: ")
+        print("Task updated successfully!\n")
+    else:
+        print("Invalid task number!\n")
+
+def delete_task():
+    show_tasks()
+    index = int(input("Enter task number to delete: ")) - 1
+    if 0 <= index < len(tasks):
+        tasks.pop(index)
+        print("Task deleted successfully!\n")
+    else:
+        print("Invalid task number!\n")
+
+while True:
+    print("=== TO-DO LIST MENU ===")
+    print("1. Show Tasks")
+    print("2. Add Task")
+    print("3. Update Task")
+    print("4. Delete Task")
+    print("5. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        show_tasks()
+    elif choice == "2":
+        add_task()
+    elif choice == "3":
+        update_task()
+    elif choice == "4":
+        delete_task()
+    elif choice == "5":
+        print("Exiting To-Do List. Bye! 👋")
+        break
+    else:
+        print("Invalid choice! Try again.\n")
